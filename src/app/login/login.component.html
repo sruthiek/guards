@@ -1,0 +1,29 @@
+<form [formGroup]="loginform">
+    <p-card header="login" [style]="{width:'360px'}">
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" pInputText formControlName="email" class="w-full" name="email"
+                placeholder="Enter ur Email" />
+            <small *ngIf="email.invalid && (email.touched)" class="block p-error">
+                <div *ngIf="email.errors?.['required']">Email is required</div>
+                <div *ngIf="email.errors?.['email']">Email should be valid</div>
+
+            </small>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" pInputText formControlName="password" class="w-full" name="password"
+                placeholder="Enter ur password" />
+                <small *ngIf="password.invalid && (password.touched)" class="block p-error">
+                    <div *ngIf="password.errors?.['required']">Password  is required</div>
+                    
+    
+                </small>
+        </div>
+        <p-button label="SIGNIN" styleClass="w-full" [disabled]="loginform.invalid"></p-button>
+        <div class="mt-2">
+            Not a Registered User? <a routerLink="/register">Register</a>
+        </div>
+    </p-card>
+</form>
